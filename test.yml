@@ -4,4 +4,5 @@
   roles:
     - role: '{{playbook_dir}}'
       cassandra_activate: False
+      cassandra_network_iface: lo
       
