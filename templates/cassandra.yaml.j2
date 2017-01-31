@@ -8,7 +8,7 @@
 
 # The name of the cluster. This is mainly used to prevent machines in
 # one logical cluster from joining another.
-cluster_name: {{cassandra_cluster_name | to_json}}
+cluster_name: {{cassandra_cluster_name}}
 
 # This defines the number of tokens randomly assigned to this node on the ring
 # The more tokens, relative to other nodes, the larger the proportion of data
@@ -23,7 +23,7 @@ cluster_name: {{cassandra_cluster_name | to_json}}
 #
 # If you already have a cluster with 1 token per node, and wish to migrate to 
 # multiple tokens per node, see http://wiki.apache.org/cassandra/Operations
-num_tokens: {{cassandra_num_tokens | to_json}}
+num_tokens: {{cassandra_num_tokens}}
 
 # Triggers automatic allocation of num_tokens tokens for this node. The allocation
 # algorithm attempts to choose tokens in a way that optimizes replicated load over
@@ -69,7 +69,7 @@ max_hints_delivery_threads: 2
 
 # Directory where Cassandra should store hints.
 # If not set, the default directory is $CASSANDRA_HOME/data/hints.
-# hints_directory: /var/lib/cassandra/hints
+hints_directory: {{cassandra_eff_hints_directory}}
 
 # How often hints should be flushed from the internal buffers to disk.
 # Will *not* trigger fsync.
@@ -99,7 +99,7 @@ batchlog_replay_throttle_in_kb: 1024
 #   users. It keeps usernames and hashed passwords in system_auth.credentials table.
 #   Please increase system_auth keyspace replication factor if you use this authenticator.
 #   If using PasswordAuthenticator, CassandraRoleManager must also be used (see below)
-authenticator: {{cassandra_authenticator | to_json}}
+authenticator: {{cassandra_authenticator}}
 
 # Authorization backend, implementing IAuthorizer; used to limit access/provide permissions
 # Out of the box, Cassandra provides org.apache.cassandra.auth.{AllowAllAuthorizer,
@@ -108,7 +108,7 @@ authenticator: {{cassandra_authenticator | to_json}}
 # - AllowAllAuthorizer allows any action to any user - set it to disable authorization.
 # - CassandraAuthorizer stores permissions in system_auth.permissions table. Please
 #   increase system_auth keyspace replication factor if you use this authorizer.
-authorizer: {{cassandra_authorizer | to_json}}
+authorizer: {{cassandra_authorizer}}
 
 # Part of the Authentication & Authorization backend, implementing IRoleManager; used
 # to maintain grants and memberships between roles.
@@ -119,7 +119,7 @@ authorizer: {{cassandra_authorizer | to_json}}
 #
 # - CassandraRoleManager stores role data in the system_auth keyspace. Please
 #   increase system_auth keyspace replication factor if you use this role manager.
-role_manager: {{cassandra_role_manager | to_json}}
+role_manager: {{cassandra_role_manager}}
 
 # Validity period for roles cache (fetching granted roles can be an expensive
 # operation depending on the role manager, CassandraRoleManager is one example)
@@ -180,22 +180,18 @@ credentials_validity_in_ms: 2000
 # compatibility include RandomPartitioner, ByteOrderedPartitioner, and
 # OrderPreservingPartitioner.
 #
-partitioner: {{cassandra_partitioner | to_json}}
+partitioner: {{cassandra_partitioner}}
 
 # Directories where Cassandra should store data on disk.  Cassandra
 # will spread data evenly across them, subject to the granularity of
 # the configured compaction strategy.
 # If not set, the default directory is $CASSANDRA_HOME/data/data.
-{% if cassandra_data_file_directories is defined %}
-data_file_directories: {{cassandra_data_file_directories | to_yaml}}
-{% endif %}
+data_file_directories: {{cassandra_eff_data_file_directories | to_json}}
 
 # commit log.  when running on magnetic HDD, this should be a
 # separate spindle than the data directories.
 # If not set, the default directory is $CASSANDRA_HOME/data/commitlog.
-{% if cassandra_commitlog_directory is defined %}
-commitlog_directory: {{cassandra_commitlog_directory | to_json}}
-{% endif %}
+commitlog_directory: {{cassandra_eff_commitlog_directory}}
 
 # policy for data disk failures:
 # die: shut down gossip and client transports and kill the JVM for any fs errors or
@@ -335,7 +331,7 @@ counter_cache_save_period: 7200
 
 # saved caches
 # If not set, the default directory is $CASSANDRA_HOME/data/saved_caches.
-# saved_caches_directory: /var/lib/cassandra/saved_caches
+saved_caches_directory: {{cassandra_eff_saved_caches}}
 
 # commitlog_sync may be either "periodic" or "batch." 
 # 
@@ -527,7 +523,7 @@ ssl_storage_port: 7001
 # address will be used. If true the first ipv6 address will be used. Defaults to false preferring
 # ipv4. If there is only one address it will be selected regardless of ipv4/ipv6.
 #listen_address: localhost
-listen_interface: {{cassandra_network_iface | to_json}}
+listen_interface: {{cassandra_network_iface}}
 # listen_interface_prefer_ipv6: false
 
 # Address to broadcast to other Cassandra nodes
@@ -602,7 +598,7 @@ start_rpc: false
 # address will be used. If true the first ipv6 address will be used. Defaults to false preferring
 # ipv4. If there is only one address it will be selected regardless of ipv4/ipv6.
 # rpc_address: localhost
-rpc_interface: {{cassandra_network_iface | to_json}}
+rpc_interface: {{cassandra_network_iface}}
 # rpc_interface_prefer_ipv6: false
 
 # port for Thrift to listen for clients on
@@ -843,7 +839,7 @@ cross_node_timeout: false
 #
 # You can use a custom Snitch by setting this to the full class name
 # of the snitch, which will be assumed to be on your classpath.
-endpoint_snitch: {{cassandra_endpoint_snitch | to_json}}
+endpoint_snitch: {{cassandra_endpoint_snitch}}
 
 # controls how often to perform the more expensive part of host score
 # calculation
@@ -871,7 +867,7 @@ dynamic_snitch_badness_threshold: 0.1
 # client requests to a node with a separate queue for each
 # request_scheduler_id. The scheduler is further customized by
 # request_scheduler_options as described below.
-request_scheduler: {{cassandra_request_scheduler | to_json}}
+request_scheduler: {{cassandra_request_scheduler}}
 
 # Scheduler Options vary based on the type of scheduler
 # NoScheduler - Has no options

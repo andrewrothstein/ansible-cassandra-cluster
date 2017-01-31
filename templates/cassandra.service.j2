@@ -6,6 +6,12 @@ After=network.target
 
 [Service]
 PIDFile={{cassandra_home_dir}}/run/cassandra.pid
+ExecStartPre=-mkdir -p {{cassandra_eff_hints_directory}}
+{% for d in cassandra_eff_data_file_directories %}
+ExecStartPre=-mkdir -p {{d}}
+{% endfor %}
+ExecStartPre=-mkdir -p {{cassandra_eff_commitlog_directory}}
+ExecStartPre=-mkdir -p {{cassandra_eff_saved_caches}}
 ExecStart={{cassandra_home_dir}}/bin/cassandra -f -R -p {{cassandra_home_dir}}/run/cassandra.pid
 StandardOutput=journal
 StandardError=journal

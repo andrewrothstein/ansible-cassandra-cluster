@@ -3,3 +3,13 @@
 cassandra_name : 'apache-cassandra-{{cassandra_ver}}'
 cassandra_tgz : '{{cassandra_name}}-bin.tar.gz'
 cassandra_tgz_url : '{{cassandra_mirror}}/{{cassandra_ver}}/{{cassandra_tgz}}'
+
+cassandra_default_hints_directory: '{{cassandra_home_dir}}/data/hints'
+cassandra_default_data_file_directories: ['{{cassandra_home_dir}}/data/data']
+cassandra_default_commitlog_directory: '{{cassandra_home_dir}}/data/commitlog'
+cassandra_default_saved_caches: '{{cassandra_home_dir}}/data/saved_caches'
+
+cassandra_eff_hints_directory: '{{cassandra_hints_directory | default(cassandra_default_hints_directory)}}'
+cassandra_eff_data_file_directories: '{{cassandra_data_file_directories | default(cassandra_default_data_file_directories)}}'
+cassandra_eff_commitlog_directory: '{{cassandra_commitlog_directory | default(cassandra_default_commitlog_directory)}}'
+cassandra_eff_saved_caches: '{{cassandra_saved_caches | default(cassandra_default_saved_caches)}}'

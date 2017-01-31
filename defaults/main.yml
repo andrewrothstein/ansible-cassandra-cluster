@@ -15,9 +15,9 @@ cassandra_endpoint_snitch: SimpleSnitch
 cassandra_request_scheduler: org.apache.cassandra.scheduler.NoScheduler
 
 #cassandra_data_file_directories:
-#  - /var/lib/cassandra/data
+#  - /usr/local/cassandra/data/data
 
-#cassandra_commitlog_directory: /var/lib/cassandra/commitlog
+#cassandra_commitlog_directory: /usr/local/cassandra/data/commitlog
 
 cassandra_rpc_port: 9160
 
