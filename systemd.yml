@@ -1,0 +1,26 @@
+---
+- name: install systemd cassandra.service unit
+  become: yes
+  become_user: root
+  register: cassandra_service_installed
+  with_items:
+    - cassandra.service
+  template:
+    src: '{{item}}.j2'
+    dest: /etc/systemd/system/{{item}}
+    mode: '0644'
+
+- name: systemctl daemon-reload
+  become: yes
+  become_user: root
+  when: cassandra_service_installed|changed and cassandra_activate
+  command: systemctl daemon-reload
+  
+- name: launch cassandra
+  become: yes
+  become_user: root
+  when: cassandra_activate
+  service:
+    name: cassandra
+    enabled: yes
+    state: started

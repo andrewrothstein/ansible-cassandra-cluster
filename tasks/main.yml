@@ -7,21 +7,4 @@
     dest: '{{cassandra_home_dir}}/conf/cassandra.yaml'
     mode: '0644'
     
-- name: install systemd cassandra.service unit
-  become: yes
-  become_user: root
-  with_items:
-    - cassandra.service
-  template:
-    src: '{{item}}.j2'
-    dest: /etc/systemd/system/{{item}}
-    mode: '0644'
-
-- name: launch cassandra
-  become: yes
-  become_user: root
-  when: cassandra_activate
-  service:
-    name: apache-cassandra
-    enabled: yes
-    state: started
+- include: '{{cassandra_supervisor|default("systemd")}}.yml'
