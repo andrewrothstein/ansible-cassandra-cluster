@@ -24,3 +24,5 @@ cassandra_rpc_port: 9160
 cassandra_groupname: cassandra-cluster
 
 cassandra_download_timeout_seconds: 600
+
+cassandra_activate: True

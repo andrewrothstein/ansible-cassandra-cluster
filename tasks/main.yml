@@ -20,7 +20,7 @@
 - name: launch cassandra
   become: yes
   become_user: root
-  when: cassandra_launch
+  when: cassandra_activate
   service:
     name: apache-cassandra
     enabled: yes
