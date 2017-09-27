@@ -7,4 +7,4 @@
     dest: '{{cassandra_home_dir}}/conf/cassandra.yaml'
     mode: '0644'
     
-- include: '{{cassandra_supervisor|default("systemd")}}.yml'
+- include_tasks: '{{cassandra_supervisor|default("systemd")}}.yml'
