@@ -16,6 +16,10 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - xenial
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
 
   galaxy_tags:
     - database
@@ -24,5 +28,4 @@ galaxy_info:
 
 dependencies:
   - role: andrewrothstein.cassandra
-    version: v2.0.0
-  
+    version: v2.0.1
