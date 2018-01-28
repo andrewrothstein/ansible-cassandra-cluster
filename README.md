@@ -1,4 +1,4 @@
-andrewrothstein.cassandra
+andrewrothstein.cassandra-cluster
 =========================
 [![Build Status](https://travis-ci.org/andrewrothstein/ansible-cassandra-cluster.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-cassandra-cluster)
 
@@ -34,6 +34,10 @@ Example Playbook
 - hosts: cassandra-cluster
   roles:
     - role: andrewrothstein.cassandra
+	  cassandra_network_iface: eth0
+	  cassandra_seeds:
+	    ty: group
+		name: cassandra-cluster
 ```
 
 License

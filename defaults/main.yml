@@ -1,6 +1,19 @@
 ---
 # defaults file for ansible-cassandra
-cassandra_network_iface: eth0
+
+# default setup for a single node listening on localhost
+cassandra_network_iface: lo
+cassandra_seeds:
+  ty: static
+  seeds:
+    - '127.0.0.1'
+
+# To use an Ansible group
+#cassandra_network_iface: eth0
+#cassandra_seeds:
+#  ty: group
+#  name: cassandra-cluster
+
 cassandra_home_dir : /usr/local/cassandra
 
 cassandra_cluster_name : 'Test Cluster'
@@ -20,8 +33,6 @@ cassandra_request_scheduler: org.apache.cassandra.scheduler.NoScheduler
 #cassandra_commitlog_directory: /usr/local/cassandra/data/commitlog
 
 cassandra_rpc_port: 9160
-
-cassandra_groupname: cassandra-cluster
 
 cassandra_download_timeout_seconds: 600
 
