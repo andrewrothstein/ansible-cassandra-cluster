@@ -45,3 +45,7 @@ cassandra_internode_compression: dc
 cassandra_concurrent_reads: 32
 cassandra_concurrent_writes: 32
 cassandra_concurrent_counter_writes: 32
+
+cassandra_read_request_timeout_in_ms: 5000
+cassandra_range_request_timeout_in_ms: 10000
+cassandra_write_request_timeout_in_ms: 2000
