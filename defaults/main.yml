@@ -37,3 +37,7 @@ cassandra_rpc_port: 9160
 cassandra_download_timeout_seconds: 600
 
 cassandra_activate: True
+
+cassandra_enable_user_defined_functions: false
+
+cassandra_internode_compression: dc
