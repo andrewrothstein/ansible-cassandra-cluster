@@ -52,3 +52,6 @@ cassandra_write_request_timeout_in_ms: 2000
 
 cassandra_truncate_request_timeout_in_ms: 60000
 cassandra_request_timeout_in_ms: 10000
+
+cassandra_tombstone_warn_threshold: 1000
+cassandra_tombstone_failure_threshold: 100000
