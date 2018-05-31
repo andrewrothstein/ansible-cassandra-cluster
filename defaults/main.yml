@@ -41,3 +41,7 @@ cassandra_activate: True
 cassandra_enable_user_defined_functions: false
 
 cassandra_internode_compression: dc
+
+cassandra_concurrent_reads: 32
+cassandra_concurrent_writes: 32
+cassandra_concurrent_counter_writes: 32
