@@ -951,7 +951,7 @@ client_encryption_options:
 # can be:  all  - all traffic is compressed
 #          dc   - traffic between different datacenters is compressed
 #          none - nothing is compressed.
-internode_compression: dc
+internode_compression: {{cassandra_internode_compression}}
 
 # Enable or disable tcp_nodelay for inter-dc communication.
 # Disabling it will result in larger (but fewer) network packets being sent,
@@ -965,7 +965,7 @@ tracetype_repair_ttl: 604800
 
 # UDFs (user defined functions) are disabled by default.
 # As of Cassandra 3.0 there is a sandbox in place that should prevent execution of evil code.
-enable_user_defined_functions: false
+enable_user_defined_functions: {{cassandra_enable_user_defined_functions}}
 
 # Enables scripted UDFs (JavaScript UDFs).
 # Java UDFs are always enabled, if enable_user_defined_functions is true.
