@@ -14,12 +14,12 @@ cassandra_seeds:
 #  ty: group
 #  name: cassandra-cluster
 
-cassandra_home_dir : /usr/local/cassandra
+cassandra_home_dir: /usr/local/cassandra
 
-cassandra_cluster_name : 'Test Cluster'
+cassandra_cluster_name: 'Test Cluster'
 cassandra_num_tokens: 256
 
-cassandra_authenticator : AllowAllAuthenticator
+cassandra_authenticator: AllowAllAuthenticator
 cassandra_authorizer: AllowAllAuthorizer
 cassandra_role_manager: CassandraRoleManager
 

@@ -1,8 +1,8 @@
 ---
 # vars file for ansible-cassandra
-cassandra_name : 'apache-cassandra-{{cassandra_ver}}'
-cassandra_tgz : '{{cassandra_name}}-bin.tar.gz'
-cassandra_tgz_url : '{{cassandra_mirror}}/{{cassandra_ver}}/{{cassandra_tgz}}'
+cassandra_name: 'apache-cassandra-{{cassandra_ver}}'
+cassandra_tgz: '{{cassandra_name}}-bin.tar.gz'
+cassandra_tgz_url: '{{cassandra_mirror}}/{{cassandra_ver}}/{{cassandra_tgz}}'
 
 cassandra_default_hints_directory: '{{cassandra_home_dir}}/data/hints'
 cassandra_default_data_file_directories: ['{{cassandra_home_dir}}/data/data']
