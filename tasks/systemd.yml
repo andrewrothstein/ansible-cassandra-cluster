@@ -13,7 +13,7 @@
 - name: systemctl daemon-reload
   become: yes
   become_user: root
-  when: cassandra_service_installed|changed and cassandra_activate
+  when: cassandra_service_installed is changed and cassandra_activate
   command: systemctl daemon-reload
   
 - name: launch cassandra
