@@ -6,16 +6,17 @@
   with_items:
     - cassandra.service
   template:
-    src: '{{item}}.j2'
-    dest: /etc/systemd/system/{{item}}
+    src: '{{ item }}.j2'
+    dest: /etc/systemd/system/{{ item }}
     mode: '0644'
 
 - name: systemctl daemon-reload
   become: yes
   become_user: root
   when: cassandra_service_installed is changed and cassandra_activate
-  command: systemctl daemon-reload
-  
+  systemd:
+    daemon_reload: yes
+
 - name: launch cassandra
   become: yes
   become_user: root

@@ -4,7 +4,7 @@
   become_user: root
   template:
     src: cassandra.yaml.j2
-    dest: '{{cassandra_home_dir}}/conf/cassandra.yaml'
+    dest: '{{ cassandra_home_dir }}/conf/cassandra.yaml'
     mode: '0644'
-    
-- include_tasks: '{{cassandra_supervisor|default("systemd")}}.yml'
+
+- include_tasks: '{{ cassandra_supervisor|default("systemd") }}.yml'
