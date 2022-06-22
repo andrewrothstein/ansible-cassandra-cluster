@@ -1,8 +1,8 @@
 andrewrothstein.cassandra-cluster
 =========================
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-cassandra-cluster.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-cassandra-cluster)
+![Build Status](https://github.com/andrewrothstein/ansible-cassandra-cluster/actions/workflows/build.yml/badge.svg)
 
-Installs and configures a cassandra cluster
+Installs and configures a cassandra cluster.
 
 Requirements
 ------------

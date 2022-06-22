@@ -1,6 +1,6 @@
 ---
 - name: configure...
-  become: yes
+  become: true
   become_user: root
   template:
     src: cassandra.yaml.j2

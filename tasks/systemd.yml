@@ -1,6 +1,6 @@
 ---
 - name: install systemd cassandra.service unit
-  become: yes
+  become: true
   become_user: root
   register: cassandra_service_installed
   with_items:
@@ -11,17 +11,17 @@
     mode: '0644'
 
 - name: systemctl daemon-reload
-  become: yes
+  become: true
   become_user: root
   when: cassandra_service_installed is changed and cassandra_activate
   systemd:
-    daemon_reload: yes
+    daemon_reload: true
 
 - name: launch cassandra
-  become: yes
+  become: true
   become_user: root
   when: cassandra_activate
   service:
     name: cassandra
-    enabled: yes
+    enabled: true
     state: started

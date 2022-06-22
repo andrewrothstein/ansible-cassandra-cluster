@@ -9,10 +9,10 @@ cassandra_seeds:
     - '127.0.0.1'
 
 # To use an Ansible group
-#cassandra_network_iface: eth0
-#cassandra_seeds:
-#  ty: group
-#  name: cassandra-cluster
+# cassandra_network_iface: eth0
+# cassandra_seeds:
+#   ty: group
+#   name: cassandra-cluster
 
 cassandra_home_dir: /usr/local/cassandra
 
@@ -27,16 +27,16 @@ cassandra_partitioner: org.apache.cassandra.dht.Murmur3Partitioner
 cassandra_endpoint_snitch: SimpleSnitch
 cassandra_request_scheduler: org.apache.cassandra.scheduler.NoScheduler
 
-#cassandra_data_file_directories:
-#  - /usr/local/cassandra/data/data
+# cassandra_data_file_directories:
+# - /usr/local/cassandra/data/data
 
-#cassandra_commitlog_directory: /usr/local/cassandra/data/commitlog
+# cassandra_commitlog_directory: /usr/local/cassandra/data/commitlog
 
 cassandra_rpc_port: 9160
 
 cassandra_download_timeout_seconds: 600
 
-cassandra_activate: True
+cassandra_activate: true
 
 cassandra_enable_user_defined_functions: false
 
